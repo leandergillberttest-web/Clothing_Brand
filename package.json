@@ -1,0 +1,14 @@
+{
+  "name": "clothing-brand",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "start": "vercel dev"
+  },
+  "dependencies": {
+    "@vercel/postgres": "^0.10.0"
+  },
+  "devDependencies": {
+    "vercel": "^44.2.10"
+  }
+}

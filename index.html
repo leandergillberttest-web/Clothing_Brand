@@ -3,9 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Northline Apparel offers modern clothing, seasonal essentials, and customer enquiries for custom store orders.">
   <title>Northline Apparel</title>
   <link rel="preconnect" href="https://images.unsplash.com">
   <link rel="stylesheet" href="styles.css">
+  <script defer src="script.js"></script>
 </head>
 <body>
   <header class="site-header">
@@ -14,8 +16,9 @@
       <a href="#new">New</a>
       <a href="#collections">Collections</a>
       <a href="#journal">Journal</a>
+      <a href="#contact">Contact</a>
     </nav>
-    <a class="header-action" href="#shop">Shop now</a>
+    <a class="header-action" href="#register">Register</a>
   </header>
 
   <main>
@@ -65,26 +68,98 @@
           </div>
         </article>
         <article class="product-card">
-          <img src="https://images.unsplash.com/photo-1445205170230-053b83016050?auto=format&fit=crop&w=900&q=80" alt="Minimal clothing display in a boutique">
+          <img src="https://images.unsplash.com/photo-1445205170230-053b83016050?auto=format&fit=crop&w=900&q=80" alt="Minimal clothing display in a boutique" loading="lazy">
           <div class="product-info">
             <h3>Everyday Cotton Set</h3>
             <p>$94</p>
           </div>
         </article>
         <article class="product-card">
-          <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=900&q=80" alt="Model wearing a layered fashion outfit">
+          <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=900&q=80" alt="Model wearing a layered fashion outfit" loading="lazy">
           <div class="product-info">
             <h3>Relaxed Wool Trouser</h3>
             <p>$112</p>
           </div>
         </article>
         <article class="product-card">
-          <img src="assets/naam-tshirt.png" alt="Model wearing a white and blue graphic T-shirt">
+          <img src="assets/naam-tshirt.png" alt="Model wearing a white and blue graphic T-shirt" loading="lazy">
           <div class="product-info">
             <h3>Justus Fan Edition Graphic Tee</h3>
             <p>$1</p>
           </div>
         </article>
+      </div>
+    </section>
+
+    <section class="form-section" id="contact" aria-label="Customer enquiry and registration forms">
+      <div class="form-intro">
+        <p class="eyebrow">Customer care</p>
+        <h2>Ask about sizing, stock, custom orders, or store registration.</h2>
+      </div>
+
+      <div class="form-grid">
+        <form class="panel-form" data-endpoint="/api/enquiries">
+          <div class="form-heading">
+            <h3>Customer enquiry</h3>
+            <p>Send a product question or custom clothing request.</p>
+          </div>
+          <input class="hidden-field" type="text" name="company" tabindex="-1" autocomplete="off" aria-hidden="true">
+          <label>
+            Name
+            <input type="text" name="name" autocomplete="name" required>
+          </label>
+          <label>
+            Email
+            <input type="email" name="email" autocomplete="email" required>
+          </label>
+          <label>
+            Interested in
+            <select name="product">
+              <option value="General enquiry">General enquiry</option>
+              <option value="Canvas Field Jacket">Canvas Field Jacket</option>
+              <option value="Everyday Cotton Set">Everyday Cotton Set</option>
+              <option value="Relaxed Wool Trouser">Relaxed Wool Trouser</option>
+              <option value="Justus Fan Edition Graphic Tee">Justus Fan Edition Graphic Tee</option>
+            </select>
+          </label>
+          <label>
+            Message
+            <textarea name="message" rows="5" required></textarea>
+          </label>
+          <button type="submit">Send enquiry</button>
+          <p class="form-status" role="status" aria-live="polite"></p>
+        </form>
+
+        <form class="panel-form accent-form" id="register" data-endpoint="/api/register">
+          <div class="form-heading">
+            <h3>Store registration</h3>
+            <p>Join the customer list for launches and private offers.</p>
+          </div>
+          <input class="hidden-field" type="text" name="company" tabindex="-1" autocomplete="off" aria-hidden="true">
+          <label>
+            Full name
+            <input type="text" name="name" autocomplete="name" required>
+          </label>
+          <label>
+            Email
+            <input type="email" name="email" autocomplete="email" required>
+          </label>
+          <label>
+            Phone
+            <input type="tel" name="phone" autocomplete="tel">
+          </label>
+          <label>
+            Style interest
+            <select name="interest">
+              <option value="New arrivals">New arrivals</option>
+              <option value="Graphic T-shirts">Graphic T-shirts</option>
+              <option value="Outerwear">Outerwear</option>
+              <option value="Tailoring">Tailoring</option>
+            </select>
+          </label>
+          <button type="submit">Register</button>
+          <p class="form-status" role="status" aria-live="polite"></p>
+        </form>
       </div>
     </section>
 
@@ -103,10 +178,13 @@
         <p class="eyebrow">Members first</p>
         <h2>Get early access to drops and private seasonal offers.</h2>
       </div>
-      <form class="signup-form">
+      <form class="signup-form" data-endpoint="/api/register">
+        <input class="hidden-field" type="text" name="company" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <input type="hidden" name="interest" value="Members first newsletter">
         <label class="sr-only" for="email">Email address</label>
-        <input id="email" type="email" placeholder="Email address" required>
+        <input id="email" name="email" type="email" placeholder="Email address" required>
         <button type="submit">Join</button>
+        <p class="form-status compact-status" role="status" aria-live="polite"></p>
       </form>
     </section>
   </main>
